@@ -1,4 +1,5 @@
 package ru.rybak_vadim;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,49 +11,22 @@ public class Main {
         IntegerGenerator integerGenerator = new IntegerGenerator();
         FileRepository fileRepository = new FileRepository();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Что вы хотите сделать? ");
-        System.out.println("1. Получить список из кэша");
-        int choise = scanner.nextInt();
-        if (choise == 1) {
-            fileRepository.getArray();
-        }
-        BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader("integerCash2.txt"));
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-        try {
-            if (bufferedReader.readLine() == null) {
+            BufferedReader reader = new BufferedReader(new FileReader("integerCash2.txt"));
+            String line = reader.readLine();
+
+            if (line == null) {
                 System.out.println("список пуст");
-
             } else {
-                bufferedReader = null;
-                try {
-                    bufferedReader = new BufferedReader(new FileReader("integerCash2.txt"));
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                }
-                String line = null;
-                while (true) {
-                    try {
-                        if (!((line = bufferedReader.readLine()) != null)) break;
-                    } catch (Throwable e) {
-                        e.printStackTrace();
-                    }
+                while (line != null) {
                     System.out.println(line);
-
-
+                    line = reader.readLine();
                 }
             }
         } catch (Throwable e) {
             e.printStackTrace();
         }
-
-
-
-        }
     }
+}
 
 
