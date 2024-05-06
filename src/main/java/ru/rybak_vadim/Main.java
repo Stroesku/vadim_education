@@ -10,22 +10,15 @@ public class Main {
     public static void main(String[] args) {
         IntegerGenerator integerGenerator = new IntegerGenerator();
         FileRepository fileRepository = new FileRepository();
+        ArrayList<Integer> list = fileRepository.getArray();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("integerCash2.txt"));
-            String line = reader.readLine();
-
-            if (line == null) {
-                System.out.println("список пуст");
-            } else {
-                while (line != null) {
-                    System.out.println(line);
-                    line = reader.readLine();
-                }
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
+        if (list.isEmpty()) {
+            System.out.println("Список пуст");
+        } else {
+            System.out.println(list);
         }
+
+
     }
 }
 
