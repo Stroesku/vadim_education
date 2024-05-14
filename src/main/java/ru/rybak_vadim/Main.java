@@ -11,15 +11,22 @@ public class Main {
         IntegerGenerator integerGenerator = new IntegerGenerator();
         FileRepository fileRepository = new FileRepository();
         ArrayList<Integer> list = fileRepository.getArray();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("введите цифру 1 ");
+        int choise = scanner.nextInt();
 
-        if (list.isEmpty()) {
-            System.out.println("Список пуст");
-        } else {
-            System.out.println(list);
+        if (choise == 1) {
+            checkingScenario(list);
         }
-
-
     }
-}
+        public static void checkingScenario(ArrayList<Integer> list) {
+            if (list.isEmpty()) {
+                System.out.println("Список пуст");
+            } else {
+                System.out.println(list);
+            }
+        }
+    }
+
 
 
