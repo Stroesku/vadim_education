@@ -20,29 +20,34 @@ public class Main {
         if (choise == 1) {
             checkingScenario(list);
         }
-        if (choise == 2){
-            System.out.println("введите количество чисел ");
-            int numberOfElements = scanner.nextInt();
-            System.out.println("введите минимальное число");
-            int min = scanner.nextInt();
-            System.out.println("введите максимальное число");
-            int max = scanner.nextInt();
+        if (choise == 2) {
+            generateListScenario(integerGenerator, fileRepository, scanner);
 
-            int[] newList = integerGenerator.generateNumbers(numberOfElements, min, max);
-            fileRepository.saveArray(newList);
-
-            System.out.println("Список успешно сохранен " + Arrays.toString(newList));
         }
     }
 
-        public static void checkingScenario(ArrayList<Integer> list) {
-            if (list.isEmpty()) {
-                System.out.println("Список пуст");
-            } else {
-                System.out.println(list);
-            }
+    public static void checkingScenario(ArrayList<Integer> list) {
+        if (list.isEmpty()) {
+            System.out.println("Список пуст");
+        } else {
+            System.out.println(list);
         }
     }
+    public static void generateListScenario(IntegerGenerator integerGenerator, FileRepository fileRepository, Scanner scanner) {
+        System.out.println("Введите количество чисел: ");
+        int numberOfElements = scanner.nextInt();
+        System.out.println("Введите минимальное число: ");
+        int min = scanner.nextInt();
+        System.out.println("Введите максимальное число: ");
+        int max = scanner.nextInt();
 
+        int[] newList = integerGenerator.generateNumbers(numberOfElements, min, max);
+        fileRepository.saveArray(newList);
+
+        System.out.println("Список успешно сохранен: " + Arrays.toString(newList));
+
+
+    }
+}
 
 
