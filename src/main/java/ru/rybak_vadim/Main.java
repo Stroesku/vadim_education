@@ -23,6 +23,7 @@ public class Main {
         if (choise == 2) {
             generateListScenario(integerGenerator, fileRepository, scanner);
 
+
         }
     }
 
@@ -33,6 +34,7 @@ public class Main {
             System.out.println(list);
         }
     }
+
     public static void generateListScenario(IntegerGenerator integerGenerator, FileRepository fileRepository, Scanner scanner) {
         System.out.println("Введите количество чисел: ");
         int numberOfElements = scanner.nextInt();
@@ -40,14 +42,17 @@ public class Main {
         int min = scanner.nextInt();
         System.out.println("Введите максимальное число: ");
         int max = scanner.nextInt();
-
+        System.out.println("хотите ли отсортировать список перед сохранением " +
+                " 1)да " + " 2)нет");
         int[] newList = integerGenerator.generateNumbers(numberOfElements, min, max);
-        fileRepository.saveArray(newList);
+        if (scanner.nextInt() == 1) {
+            integerGenerator.sort(newList);
+            System.out.println("Список успешно сохранен и отсортирован: " + Arrays.toString(newList));
+        } else {
+            fileRepository.saveArray(newList);
 
-        System.out.println("Список успешно сохранен: " + Arrays.toString(newList));
-
-
+            System.out.println("Список успешно сохранен: " + Arrays.toString(newList));
+        }
     }
 }
-
 
