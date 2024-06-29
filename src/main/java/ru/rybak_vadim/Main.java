@@ -9,11 +9,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public enum Option{
-        EXISTINGLIST,
-        ADDNEWLIST
-    }
-
     public static void main(String[] args) {
         IntegerGenerator integerGenerator = new IntegerGenerator();
         FileRepository fileRepository = new FileRepository();
@@ -23,24 +18,23 @@ public class Main {
         System.out.println("1) Показать существующие списки ");
         System.out.println("2)добавить новый список ");
 
-        Option choise = null;
+        QuestionForUser choose = null;
         int input = scanner.nextInt();
         if (input == 1) {
-            choise = Option.EXISTINGLIST;
+            choose = QuestionForUser.EXISTINGLIST;
         } else if (input == 2) {
-            choise = Option.ADDNEWLIST;
+            choose = QuestionForUser.ADDNEWLIST;
         }
         else{
             System.out.println("выберите возможный вариант ответа");
         }
-        switch (choise) {
+        switch (choose) {
             case EXISTINGLIST -> {
                 checkingScenario(list);
-                break;
+
             }
             case ADDNEWLIST -> {
                 generateListScenario(integerGenerator, fileRepository, scanner);
-                break;
             }
         }
     }
