@@ -15,25 +15,25 @@ public class Main {
         ArrayList<Integer> list = fileRepository.getArray();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("1) Показать существующие списки ");
-        System.out.println("2)добавить новый список ");
+        System.out.println(" 1) Показать существующие списки ");
+        System.out.println(" 2) добавить новый список ");
 
-        QuestionForUser choose = null;
+        UserKeyboardOption choice = null;
         int input = scanner.nextInt();
         if (input == 1) {
-            choose = QuestionForUser.EXISTINGLIST;
+            choice = UserKeyboardOption.EXISTING_LIST;
         } else if (input == 2) {
-            choose = QuestionForUser.ADDNEWLIST;
+            choice = UserKeyboardOption.ADD_NEW_LIST;
         }
         else{
             System.out.println("выберите возможный вариант ответа");
         }
-        switch (choose) {
-            case EXISTINGLIST -> {
+        switch (choice) {
+            case EXISTING_LIST -> {
                 checkingScenario(list);
 
             }
-            case ADDNEWLIST -> {
+            case ADD_NEW_LIST -> {
                 generateListScenario(integerGenerator, fileRepository, scanner);
             }
         }
