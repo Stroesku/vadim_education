@@ -9,38 +9,32 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public enum Option{
-        EXISTINGLIST,
-        ADDNEWLIST
-    }
-
     public static void main(String[] args) {
         IntegerGenerator integerGenerator = new IntegerGenerator();
         FileRepository fileRepository = new FileRepository();
         ArrayList<Integer> list = fileRepository.getArray();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("1) Показать существующие списки ");
-        System.out.println("2)добавить новый список ");
+        System.out.println(" 1) Показать существующие списки ");
+        System.out.println(" 2) добавить новый список ");
 
-        Option choise = null;
+        UserKeyboardOption choice = null;
         int input = scanner.nextInt();
         if (input == 1) {
-            choise = Option.EXISTINGLIST;
+            choice = UserKeyboardOption.EXISTING_LIST;
         } else if (input == 2) {
-            choise = Option.ADDNEWLIST;
+            choice = UserKeyboardOption.ADD_NEW_LIST;
         }
         else{
             System.out.println("выберите возможный вариант ответа");
         }
-        switch (choise) {
-            case EXISTINGLIST -> {
+        switch (choice) {
+            case EXISTING_LIST -> {
                 checkingScenario(list);
-                break;
+
             }
-            case ADDNEWLIST -> {
+            case ADD_NEW_LIST -> {
                 generateListScenario(integerGenerator, fileRepository, scanner);
-                break;
             }
         }
     }
