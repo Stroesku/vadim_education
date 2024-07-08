@@ -57,7 +57,7 @@ public class Main {
         System.out.println("хотите ли отсортировать список перед сохранением " + " 1)да " + " 2)нет");
 
         if (scanner.nextInt() == 1) {
-            integerGenerator.sort(newList);
+            integerGenerator.sort1(newList);
             fileRepository.saveArray(newList);
             System.out.println("Список успешно сохранен и отсортирован: " + Arrays.toString(newList));
         }

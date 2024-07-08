@@ -42,6 +42,8 @@ public class FileRepository {
 
                 for (char c : charArrray) {
                     if (Character.isDigit(c)) {
+
+
                         int number = Character.getNumericValue(c);
                         arrayList.add(number);
 

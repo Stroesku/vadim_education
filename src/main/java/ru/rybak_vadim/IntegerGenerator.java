@@ -20,7 +20,7 @@ public class IntegerGenerator {
 
     public int[] sort(int[] newList) {
         boolean sorted = false; //создание переменной sorted и присваивание ей значения false.
-//        создаем цикл while, который выполняется пока sorted не стане равной true
+//        создаем цикл while, который выполняется пока sorted не станет равной true
         while (!sorted) {
 //            присваивание переменной sorted значения true. если массив уже отсортирован то цикл закончится
             sorted = true;
@@ -40,5 +40,19 @@ public class IntegerGenerator {
         }
         return newList;
     }
+
+    public int[] sort1(int[] newList) {
+        for (int i = 1; i < newList.length; i++) {
+            int key = newList[i];
+            int j = i - 1;
+            while (j >= 0 && newList[j] > key) {
+                newList[j + 1] = newList[j];
+                j = j - 1;
+            }
+            newList[j + 1] = key;
+        }
+        return newList;
+    }
+
 }
 
